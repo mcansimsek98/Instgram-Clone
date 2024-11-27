@@ -8,17 +8,19 @@
 import SwiftUI
 
 struct FeedCell: View {
+    let post: PostModel
+    
     var body: some View {
         VStack {
             /// Image + Username
             HStack {
-                Image(.person3)
+                Image(post.user?.profileImage ?? "person")
                     .resizable()
                     .scaledToFill()
                     .frame(width: 40, height: 40)
                     .clipShape(Circle())
                 
-                Text("Julianna")
+                Text(post.user?.username ?? "")
                     .font(.footnote)
                     .fontWeight(.semibold)
                 
@@ -28,7 +30,7 @@ struct FeedCell: View {
             .padding(.leading, 8)
             
             /// Post Image
-                Image(.post4)
+            Image(post.imageUrl)
                     .resizable()
                     .scaledToFill()
                     .frame(height: 400)
@@ -66,11 +68,11 @@ struct FeedCell: View {
             }
             .padding(.leading, 8)
             .padding(.top, 4)
-            .foregroundColor(.black)
+            .foregroundColor(.igBlack)
             
             
             /// Likes Label
-            Text("12 Likes")
+            Text("\(post.likes) Likes")
                 .font(.footnote)
                 .fontWeight(.semibold)
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -79,8 +81,8 @@ struct FeedCell: View {
             
             /// Caption Label
             HStack {
-                Text("Julianna ").fontWeight(.semibold) +
-                Text("This is some test coption text")
+                Text("\(post.user?.username ?? "") ").fontWeight(.semibold) +
+                Text(post.caption)
             }
             .font(.footnote)
             .frame(maxWidth: .infinity, alignment: .leading)
@@ -98,5 +100,5 @@ struct FeedCell: View {
 }
 
 #Preview {
-    FeedCell()
+    FeedCell(post: PostModel.MOCK_POTS[0])
 }

@@ -36,7 +36,7 @@ struct CreateUserNameView: View {
                 Text("Next")
                     .font(.subheadline)
                     .fontWeight(.semibold)
-                    .foregroundColor(.white)
+                    .foregroundColor(.igWhite)
                     .frame(width: 360, height: 40)
                     .background(Color(.systemBlue))
                     .cornerRadius(8)
