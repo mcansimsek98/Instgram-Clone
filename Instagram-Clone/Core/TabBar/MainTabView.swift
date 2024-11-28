@@ -28,7 +28,7 @@ struct MainTabView: View {
                     Image(systemName: "magnifyingglass")
                 }.tag(1)
             
-            UploadPostView(tabIndex: $selectedTab)
+            GalleryImagePicker(tabIndex: $selectedTab)
                 .onAppear {
                     selectedTab = 2
                 }
