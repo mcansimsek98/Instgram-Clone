@@ -12,6 +12,12 @@ struct FeedView: View {
         NavigationStack {
             ScrollView {
                 LazyVStack(spacing: 32) {
+                    let seenStories = StoryModel.MOCK_STORIES.filter({$0.isSeen == true})
+                    let notSeenStories = StoryModel.MOCK_STORIES.filter({$0.isSeen == false})
+
+                    FeedStoryView(stories: notSeenStories + seenStories,
+                                  user: User.MOCK_USERS[0])
+                    
                     ForEach(PostModel.MOCK_POTS) { post in
                         FeedCell(post: post)
                     }
