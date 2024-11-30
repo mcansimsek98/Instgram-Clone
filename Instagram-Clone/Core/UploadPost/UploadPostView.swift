@@ -9,7 +9,7 @@ import SwiftUI
 import PhotosUI
 
 struct UploadPostView: View {
-    @Environment(\.dismiss) var dissmiss
+    @Environment(\.dismiss) var dismiss
     @State private var caption: String = ""
     @State private var imagePicerPresented = false
     let selectedImage: UIImage?
@@ -25,7 +25,7 @@ struct UploadPostView: View {
                         .frame(width: 90, height: 90)
                         .clipped()
                         .onTapGesture {
-                            dissmiss()
+                            dismiss()
                         }
                 }else {
                     Image("uploadImage")
@@ -34,7 +34,7 @@ struct UploadPostView: View {
                         .frame(width: 90, height: 90)
                         .clipped()
                         .onTapGesture {
-                            dissmiss()
+                            dismiss()
                         }
                 }
                 
@@ -59,7 +59,7 @@ struct UploadPostView: View {
                     .imageScale(.large)
                     .foregroundColor(Color(.systemBlue))
                     .onTapGesture {
-                        dissmiss()
+                        dismiss()
                     }
             }
         }

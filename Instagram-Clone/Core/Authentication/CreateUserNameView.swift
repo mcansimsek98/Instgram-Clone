@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CreateUserNameView: View {
     @State private var username: String = ""
-    @Environment(\.dismiss) var dissmiss
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         VStack(spacing: 12) {
@@ -49,7 +49,7 @@ struct CreateUserNameView: View {
                 Image(systemName: "chevron.left")
                     .imageScale(.large)
                     .onTapGesture {
-                        dissmiss()
+                        dismiss()
                     }
             }
         }

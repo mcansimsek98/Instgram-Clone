@@ -8,26 +8,40 @@
 import SwiftUI
 
 struct FeedStoryView: View {
+    @State private var selectedStory: StoryModel?
     @State var stories: [StoryModel] = []
     let user: User
     
     var body: some View {
         ScrollView(.horizontal) {
             HStack {
-                let currentUserStory = stories.filter({ $0.user?.username == user.username})
-                FeedStoryCell(story: .init(user: currentUserStory.first?.user ?? user,
-                                           isSeen: currentUserStory.first?.isSeen ?? true,
-                                           storyType: .curentUserStory,
-                                           stories: currentUserStory.first?.stories ?? []))
+                let currentUserStory = stories.filter { $0.user?.username == user.username }.first
+                let userStory: StoryModel = .init(user: currentUserStory?.user ?? user,
+                                                  storyType: .curentUserStory,
+                                                  stories: currentUserStory?.stories ?? [])
                 
-                ForEach(stories.filter({ $0.user?.username != user.username })) { story in
+                FeedStoryCell(story: userStory)
+                    .onTapGesture {
+                        selectedStory = userStory // Seçilen hikaye atanır
+                    }
+                
+                ForEach(stories.filter { $0.user?.username != user.username }) { story in
                     FeedStoryCell(story: story)
                         .padding(.horizontal, 6)
+                        .onTapGesture {
+                            selectedStory = story // Seçilen hikaye atanır
+                        }
                 }
             }
             .padding(.horizontal, 8)
         }
         .scrollIndicators(.hidden)
+        .fullScreenCover(item: $selectedStory) { story in
+            StoryView(users: stories, initialStory: story)
+        }
+        .transaction { transaction in
+            transaction.disablesAnimations = true
+        }
     }
 }
 

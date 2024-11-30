@@ -8,16 +8,14 @@
 import SwiftUI
 
 struct PostGridView: View {
+    let posts: [PostModel]
+
     private let imageDimensions: CGFloat = (UIScreen.main.bounds.width / 3) - 1
-    
     private let gridItems: [GridItem] = [
         .init(.flexible(), spacing: 1),
         .init(.flexible(), spacing: 1),
         .init(.flexible(), spacing: 1)
     ]
-    
-    let posts: [PostModel]
-
     
     var body: some View {
         LazyVGrid(columns: gridItems, spacing: 1) {
@@ -27,7 +25,6 @@ struct PostGridView: View {
                     .scaledToFill()
                     .frame(width: imageDimensions, height: imageDimensions)
                     .clipped()
-                
             }
         }
     }

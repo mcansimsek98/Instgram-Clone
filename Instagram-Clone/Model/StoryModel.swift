@@ -18,17 +18,22 @@ struct StoryModel: Codable, Identifiable, Hashable {
     var ownerUid: String = UUID().uuidString
     var timeStamp: Date = Date()
     var user: User?
-    var isSeen: Bool
     var storyType: StoryType = .otherUserStory
-    let stories: [String]
+    let stories: [StoryImageModel]
+}
+
+struct StoryImageModel: Codable, Identifiable, Hashable {
+    var id: String = UUID().uuidString
+    let image: String
+    let isSeen: Bool
 }
 
 extension StoryModel {
     static var MOCK_STORIES: [StoryModel] = [
-//        .init(user: User.MOCK_USERS[0], isSeen: true, stories: ["person_1", "post_1", "person_2"]),
-        .init(user: User.MOCK_USERS[1], isSeen: false, stories: ["person_1", "post_1", "person_2"]),
-        .init(user: User.MOCK_USERS[2], isSeen: true, stories: ["person_3", "post_2", "person_5"]),
-        .init(user: User.MOCK_USERS[3], isSeen: false, stories: ["person_4", "post_2", "person_4"]),
-        .init(user: User.MOCK_USERS[5], isSeen: false, stories: ["person_5", "post_3", "person_1"]),
+        .init(user: User.MOCK_USERS[0], stories: [StoryImageModel(image: "post_2", isSeen: true), StoryImageModel(image: "post_3", isSeen: false)]),
+        .init(user: User.MOCK_USERS[1], stories: [StoryImageModel(image: "person_2", isSeen: true)]),
+        .init(user: User.MOCK_USERS[2], stories: [StoryImageModel(image: "person_4", isSeen: true), StoryImageModel(image: "person_5", isSeen: false)]),
+        .init(user: User.MOCK_USERS[3], stories: [StoryImageModel(image: "person_3", isSeen: true), StoryImageModel(image: "person_1", isSeen: false)]),
+        .init(user: User.MOCK_USERS[5], stories: [StoryImageModel(image: "person_5", isSeen: true), StoryImageModel(image: "person_4", isSeen: false)]),
     ]
 }

@@ -11,11 +11,11 @@ struct FeedView: View {
     var body: some View {
         NavigationStack {
             ScrollView {
-                LazyVStack(spacing: 32) {
-                    let seenStories = StoryModel.MOCK_STORIES.filter({$0.isSeen == true})
-                    let notSeenStories = StoryModel.MOCK_STORIES.filter({$0.isSeen == false})
+                LazyVStack(spacing: 18) {
+//                    let seenStories = StoryModel.MOCK_STORIES.filter{$0.stories.filter{ $0.isSeen == true }}
+//                    let notSeenStories = StoryModel.MOCK_STORIES.filter({$0.stories.filter({$0.isSeen == true})})
 
-                    FeedStoryView(stories: notSeenStories + seenStories,
+                    FeedStoryView(stories: StoryModel.MOCK_STORIES,
                                   user: User.MOCK_USERS[0])
                     
                     ForEach(PostModel.MOCK_POTS) { post in

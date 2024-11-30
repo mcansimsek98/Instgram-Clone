@@ -10,7 +10,7 @@ import SwiftUI
 struct ProfileContentView: View {
     let user: User
     let isCurrentUser: Bool
-    @Environment(\.dismiss) var dissmiss
+    @Environment(\.dismiss) var dismiss
 
     var posts: [PostModel] {
         return PostModel.MOCK_POTS.filter({$0.user?.username == user.username})
@@ -39,7 +39,7 @@ struct ProfileContentView: View {
                     Image(systemName: "chevron.left")
                         .imageScale(.large)
                         .onTapGesture {
-                            dissmiss()
+                            dismiss()
                         }
                 }
             }
