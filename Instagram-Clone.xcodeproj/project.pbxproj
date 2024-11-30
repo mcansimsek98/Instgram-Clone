@@ -10,9 +10,22 @@
 		B22E3D202CF4EF1C005A5171 /* Instagram-Clone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Instagram-Clone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		B23813C72CF8593A00558978 /* Exceptions for "Instagram-Clone" folder in "Instagram-Clone" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = B22E3D1F2CF4EF1C005A5171 /* Instagram-Clone */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		B22E3D222CF4EF1C005A5171 /* Instagram-Clone */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				B23813C72CF8593A00558978 /* Exceptions for "Instagram-Clone" folder in "Instagram-Clone" target */,
+			);
 			path = "Instagram-Clone";
 			sourceTree = "<group>";
 		};
@@ -255,7 +268,10 @@
 				DEVELOPMENT_TEAM = 44MZ84GM49;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Instagram-Clone/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Instagram;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "This app needs permission to save images to your photo library.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "This app needs access to your photo library to display images.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -285,7 +301,10 @@
 				DEVELOPMENT_TEAM = 44MZ84GM49;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Instagram-Clone/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Instagram;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "This app needs permission to save images to your photo library.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "This app needs access to your photo library to display images.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CompleteSingUpView: View {
-    @Environment(\.dismiss) var dissmiss
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         VStack(spacing: 12) {
@@ -43,7 +43,7 @@ struct CompleteSingUpView: View {
                 Image(systemName: "chevron.left")
                     .imageScale(.large)
                     .onTapGesture {
-                        dissmiss()
+                        dismiss()
                     }
             }
         }

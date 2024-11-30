@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CreatePasswordView: View {
     @State private var password: String = ""
-    @Environment(\.dismiss) var dissmiss
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         VStack(spacing: 12) {
@@ -49,7 +49,7 @@ struct CreatePasswordView: View {
                 Image(systemName: "chevron.left")
                     .imageScale(.large)
                     .onTapGesture {
-                        dissmiss()
+                        dismiss()
                     }
             }
         }

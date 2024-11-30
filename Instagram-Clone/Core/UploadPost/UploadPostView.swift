@@ -9,51 +9,23 @@ import SwiftUI
 import PhotosUI
 
 struct UploadPostView: View {
+    @Environment(\.dismiss) var dismiss
     @State private var caption: String = ""
     @State private var imagePicerPresented = false
-    @StateObject var viewModel = UploadPostViewModel()
-    @Binding var tabIndex: Int
-    
+    let selectedImage: UIImage?
+
     var body: some View {
         VStack {
-            /// Action tool bar
-            HStack {
-                Button{
-                    caption = ""
-                    viewModel.postImage = nil
-                    viewModel.selectedImage = nil
-                    tabIndex = 0
-                } label: {
-                    Text("Cancel")
-                        .fontWeight(.semibold)
-                }
-                .foregroundColor(Color(.systemBlue))
-                
-                Spacer()
-                Text("New Post")
-                    .fontWeight(.bold)
-                Spacer()
-
-                Button{
-                    
-                } label: {
-                    Text("Upload")
-                        .fontWeight(.semibold)
-                }
-                .foregroundColor(Color(.systemBlue))
-            }
-            .padding(.horizontal)
-            
             /// Post image and camption
             HStack {
-                if let image = viewModel.postImage {
-                    image
+                if let image = selectedImage {
+                    Image(uiImage: image)
                         .resizable()
                         .scaledToFill()
                         .frame(width: 90, height: 90)
                         .clipped()
                         .onTapGesture {
-                            imagePicerPresented = true
+                            dismiss()
                         }
                 }else {
                     Image("uploadImage")
@@ -62,7 +34,7 @@ struct UploadPostView: View {
                         .frame(width: 90, height: 90)
                         .clipped()
                         .onTapGesture {
-                            imagePicerPresented = true
+                            dismiss()
                         }
                 }
                 
@@ -72,13 +44,29 @@ struct UploadPostView: View {
             
             Spacer()
         }
-        .onAppear {
-            imagePicerPresented.toggle()
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Text("Upload")
+                    .fontWeight(.semibold)
+                    .foregroundColor(Color(.systemBlue))
+                    .onTapGesture {
+                        
+                    }
+            }
+            
+            ToolbarItem(placement: .navigationBarLeading) {
+                Image(systemName: "chevron.left")
+                    .imageScale(.large)
+                    .foregroundColor(Color(.systemBlue))
+                    .onTapGesture {
+                        dismiss()
+                    }
+            }
         }
-        .photosPicker(isPresented: $imagePicerPresented, selection: $viewModel.selectedImage)
+        
     }
 }
 
 #Preview {
-    UploadPostView(tabIndex: .constant(0))
+    UploadPostView(selectedImage: nil)
 }
