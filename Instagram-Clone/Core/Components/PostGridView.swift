@@ -30,6 +30,6 @@ struct PostGridView: View {
     }
 }
 
-#Preview {
-    PostGridView(posts: PostModel.MOCK_POTS)
-}
+//#Preview {
+//    PostGridView(posts: PostModel.MOCK_POTS)
+//}

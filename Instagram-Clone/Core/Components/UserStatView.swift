@@ -24,6 +24,6 @@ struct UserStatView: View {
     }
 }
 
-#Preview {
-    UserStatView(value: 10, title: "Posts")
-}
+//#Preview {
+//    UserStatView(value: 10, title: "Posts")
+//}

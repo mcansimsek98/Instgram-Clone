@@ -67,6 +67,6 @@ struct UploadPostView: View {
     }
 }
 
-#Preview {
-    UploadPostView(selectedImage: nil)
-}
+//#Preview {
+//    UploadPostView(selectedImage: nil)
+//}

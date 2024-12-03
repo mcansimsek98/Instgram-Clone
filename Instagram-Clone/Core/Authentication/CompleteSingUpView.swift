@@ -50,6 +50,6 @@ struct CompleteSingUpView: View {
     }
 }
 
-#Preview {
-    CompleteSingUpView()
-}
+//#Preview {
+//    CompleteSingUpView()
+//}

@@ -26,6 +26,6 @@ struct ProfileView: View {
     }
 }
 
-#Preview {
-    ProfileView(user: User.MOCK_USERS[0], isCurrentUser: true)
-}
+//#Preview {
+//    ProfileView(user: User.MOCK_USERS[0], isCurrentUser: true)
+//}

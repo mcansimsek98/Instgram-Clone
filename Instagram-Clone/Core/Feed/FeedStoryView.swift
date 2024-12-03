@@ -45,6 +45,6 @@ struct FeedStoryView: View {
     }
 }
 
-#Preview {
-    FeedStoryView(stories: StoryModel.MOCK_STORIES, user: User.MOCK_USERS[0])
-}
+//#Preview {
+//    FeedStoryView(stories: StoryModel.MOCK_STORIES, user: User.MOCK_USERS[0])
+//}
