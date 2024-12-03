@@ -7,14 +7,16 @@
 
 import Foundation
 import FirebaseAuth
+import FirebaseFirestore
 
 class AuthService {
     @Published var userSession: FirebaseAuth.User?
+    @Published var currentUser: User?
     
     static let shared = AuthService()
     
     init() {
-        self.userSession = Auth.auth().currentUser
+        Task { try await fetchUserData() }
     }
     
     @MainActor
@@ -32,21 +34,36 @@ class AuthService {
         do {
             let result = try await Auth.auth().createUser(withEmail: email, password: password)
             userSession = result.user
+            await uploadUserData(uid: result.user.uid, username: username, email: email)
         } catch {
             print("DEBUG: Failed to register user with error \(error.localizedDescription)")
         }
     }
     
-    func loadUserData() async throws {
+    @MainActor
+    func fetchUserData() async throws {
+        userSession = Auth.auth().currentUser
+        guard let currentUid = self.userSession?.uid else { return }
+        let snapshot = try await Firestore.firestore().collection("users").document(currentUid).getDocument()
         
+        currentUser = try? snapshot.data(as: User.self)
     }
     
     func singOut() {
         do {
             try Auth.auth().signOut()
             userSession = nil
+            currentUser = nil
         } catch {
             print("DEBUG: Failed to logout user with error \(error.localizedDescription)")
         }
+    }
+    
+    private func uploadUserData(uid: String, username: String, email: String) async {
+        let user = User(id: uid, username: username, email: email)
+        currentUser = user
+        
+        guard let encodedUser = try? Firestore.Encoder().encode(user) else { return }
+        try? await Firestore.firestore().collection("users").document(uid).setData(encodedUser)
     }
 }
