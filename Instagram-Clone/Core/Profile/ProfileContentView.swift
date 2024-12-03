@@ -29,7 +29,9 @@ struct ProfileContentView: View {
         .toolbar {
             if isCurrentUser {
                 ToolbarItem {
-                    Button {} label: {
+                    Button {
+                        AuthService.shared.singOut()
+                    } label: {
                         Image(systemName: "line.3.horizontal")
                             .tint(.black)
                     }

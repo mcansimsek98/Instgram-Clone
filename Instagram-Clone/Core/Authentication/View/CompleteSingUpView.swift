@@ -1,5 +1,5 @@
 //
-//  CreateUserNameView.swift
+//  CompleteSingUpView.swift
 //  Instagram-Clone
 //
 //  Created by Mehmet Can Şimşek on 27.11.2024.
@@ -7,33 +7,28 @@
 
 import SwiftUI
 
-struct CreateUserNameView: View {
-    @State private var username: String = ""
+struct CompleteSingUpView: View {
     @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var viewModel: RegistrationViewModel
     
     var body: some View {
         VStack(spacing: 12) {
-            Text("Create Username")
+            Spacer()
+            Text("Wellcome to instagram, \(viewModel.username)")
                 .font(.title2)
                 .fontWeight(.bold)
+                .multilineTextAlignment(.center)
                 .padding(.top)
             
-            Text("You'll use this email to sign in to your account.")
+            Text("Click below to complete registration and start using instagram")
                 .font(.footnote)
-                .foregroundColor(.gray)
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, 24)
             
-            TextField("Username", text: $username)
-                .autocapitalization(.none)
-                .modifier(IGTextFieldModifier())
-                .padding(.top)
-            
-            NavigationLink {
-                CreatePasswordView()
-                    .navigationBarBackButtonHidden()
+            Button {
+                Task { try await viewModel.createUser() }
             } label: {
-                Text("Next")
+                Text("Complete Sign Up")
                     .font(.subheadline)
                     .fontWeight(.semibold)
                     .foregroundColor(.igWhite)
@@ -42,9 +37,9 @@ struct CreateUserNameView: View {
                     .cornerRadius(8)
             }
             .padding(.vertical)
-            
             Spacer()
-        }.toolbar {
+        }
+        .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
                 Image(systemName: "chevron.left")
                     .imageScale(.large)
@@ -57,5 +52,5 @@ struct CreateUserNameView: View {
 }
 
 //#Preview {
-//    CreateUserNameView()
+//    CompleteSingUpView()
 //}

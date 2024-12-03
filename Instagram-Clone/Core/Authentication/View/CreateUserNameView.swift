@@ -1,5 +1,5 @@
 //
-//  CompleteSingUpView.swift
+//  CreateUserNameView.swift
 //  Instagram-Clone
 //
 //  Created by Mehmet Can Şimşek on 27.11.2024.
@@ -7,27 +7,33 @@
 
 import SwiftUI
 
-struct CompleteSingUpView: View {
+struct CreateUserNameView: View {
     @Environment(\.dismiss) var dismiss
-    
+    @EnvironmentObject var viewModel: RegistrationViewModel
+
     var body: some View {
         VStack(spacing: 12) {
-            Spacer()
-            Text("Wellcome to instagram, \nfjasdkfkasdjf")
+            Text("Create Username")
                 .font(.title2)
                 .fontWeight(.bold)
-                .multilineTextAlignment(.center)
                 .padding(.top)
             
-            Text("Click below to complete registration and start using instagram")
+            Text("You'll use this email to sign in to your account.")
                 .font(.footnote)
+                .foregroundColor(.gray)
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, 24)
-
-            Button {
-                
+            
+            TextField("Username", text: $viewModel.username)
+                .autocapitalization(.none)
+                .modifier(IGTextFieldModifier())
+                .padding(.top)
+            
+            NavigationLink {
+                CreatePasswordView()
+                    .navigationBarBackButtonHidden()
             } label: {
-                Text("Complete Sign Up")
+                Text("Next")
                     .font(.subheadline)
                     .fontWeight(.semibold)
                     .foregroundColor(.igWhite)
@@ -36,9 +42,9 @@ struct CompleteSingUpView: View {
                     .cornerRadius(8)
             }
             .padding(.vertical)
+            
             Spacer()
-        }
-        .toolbar {
+        }.toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
                 Image(systemName: "chevron.left")
                     .imageScale(.large)
@@ -51,5 +57,5 @@ struct CompleteSingUpView: View {
 }
 
 //#Preview {
-//    CompleteSingUpView()
+//    CreateUserNameView()
 //}
