@@ -29,7 +29,9 @@ struct ProfileContentView: View {
         .toolbar {
             if isCurrentUser {
                 ToolbarItem {
-                    Button {} label: {
+                    Button {
+                        AuthService.shared.singOut()
+                    } label: {
                         Image(systemName: "line.3.horizontal")
                             .tint(.black)
                     }
@@ -47,6 +49,6 @@ struct ProfileContentView: View {
     }
 }
 
-#Preview {
-    ProfileContentView(user: User.MOCK_USERS[0], isCurrentUser: true)
-}
+//#Preview {
+//    ProfileContentView(user: User.MOCK_USERS[0], isCurrentUser: true)
+//}

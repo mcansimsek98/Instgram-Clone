@@ -126,6 +126,6 @@ struct StoryView: View {
 }
 
 
-#Preview {
-    StoryView(users: StoryModel.MOCK_STORIES, initialStory: StoryModel.MOCK_STORIES[0])
-}
+//#Preview {
+//    StoryView(users: StoryModel.MOCK_STORIES, initialStory: StoryModel.MOCK_STORIES[0])
+//}
