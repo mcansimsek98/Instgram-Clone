@@ -45,7 +45,7 @@ struct MainTabView: View {
                     Image(systemName: "heart")
                 }.tag(3)
             
-            ProfileView(user: user, isCurrentUser: true)
+            ProfileView(user: user)
                 .onAppear {
                     selectedTab = 4
                 }

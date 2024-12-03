@@ -44,7 +44,7 @@ struct SearchView: View {
             }
             .navigationBarTitleDisplayMode(.inline)
             .navigationDestination(for: User.self) { user in
-                ProfileView(user: user, isCurrentUser: false)
+                ProfileView(user: user)
                     .navigationBarBackButtonHidden()
             }
         }
