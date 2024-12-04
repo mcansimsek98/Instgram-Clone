@@ -75,7 +75,7 @@ struct GalleryImagePicker: View {
             .navigationDestination(isPresented: $navigateToUploadPost) {
                 if let selectedID = selectedImageID,
                    let selectedImage = images.first(where: { $0.id == selectedID })?.image {
-                    UploadPostView(selectedImage: selectedImage)
+                    UploadPostView(selectedImage: selectedImage, tabIndex: $tabIndex)
                         .navigationBarBackButtonHidden()
                 }
             }

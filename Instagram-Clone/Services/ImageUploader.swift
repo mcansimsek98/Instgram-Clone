@@ -11,9 +11,9 @@ import FirebaseFirestore
 
 struct ImageUploader {
     
-    static func uploadImage(image: UIImage) async throws -> String? {
+    static func uploadImage(image: UIImage, refPath: ImageUploaderRefPath) async throws -> String? {
         guard let imageData = image.jpegData(compressionQuality: 0.5) else { return nil }
-        let ref = Storage.storage().reference(withPath: "profile/images/\(UUID().uuidString)")
+        let ref = Storage.storage().reference(withPath: refPath.path + UUID().uuidString)
         
         do {
             let _ = try await ref.putDataAsync(imageData)
