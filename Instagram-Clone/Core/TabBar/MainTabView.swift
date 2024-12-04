@@ -13,7 +13,7 @@ struct MainTabView: View {
     
     var body: some View {
         TabView(selection: $selectedTab) {
-            FeedView()
+            FeedView(user: user)
                 .onAppear {
                     selectedTab = 0
                 }
@@ -29,7 +29,7 @@ struct MainTabView: View {
                     Image(systemName: "magnifyingglass")
                 }.tag(1)
             
-            GalleryImagePicker(tabIndex: $selectedTab)
+            GalleryImagePicker(user: user, tabIndex: $selectedTab)
                 .onAppear {
                     selectedTab = 2
                 }

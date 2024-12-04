@@ -8,14 +8,16 @@
 import SwiftUI
 
 struct FeedView: View {
+    let user: User
+    @StateObject var viewModel = FeedViewModel()
+    
     var body: some View {
         NavigationStack {
             ScrollView {
                 LazyVStack(spacing: 18) {
-                    FeedStoryView(stories: StoryModel.MOCK_STORIES,
-                                  user: User.MOCK_USERS[0])
+                    FeedStoryView(stories: viewModel.stories, user: user)
                     
-                    ForEach(PostModel.MOCK_POTS) { post in
+                    ForEach(viewModel.posts) { post in
                         FeedCell(post: post)
                     }
                 }
@@ -31,8 +33,12 @@ struct FeedView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Image(systemName: "paperplane")
                         .imageScale(.large)
-                        
                 }
+            }
+        }
+        .onAppear() {
+            Task {
+                try await viewModel.fetchPosts()
             }
         }
     }
