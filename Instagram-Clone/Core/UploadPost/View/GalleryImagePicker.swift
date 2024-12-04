@@ -10,7 +10,7 @@ import PhotosUI
 
 struct GalleryImagePicker: View {
     private let imageDimensions: CGFloat = (UIScreen.main.bounds.width / 3) - 1
-    
+    let user: User
     @State private var images: [ImageItem] = []
     @State private var isPhotoAccessGranted = false
     @State private var selectedImageID: UUID? = nil
@@ -75,7 +75,7 @@ struct GalleryImagePicker: View {
             .navigationDestination(isPresented: $navigateToUploadPost) {
                 if let selectedID = selectedImageID,
                    let selectedImage = images.first(where: { $0.id == selectedID })?.image {
-                    UploadPostView(selectedImage: selectedImage, tabIndex: $tabIndex)
+                    UploadPostView(selectedImage: selectedImage, tabIndex: $tabIndex, user: user)
                         .navigationBarBackButtonHidden()
                 }
             }

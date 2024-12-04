@@ -13,8 +13,8 @@ struct UploadPostView: View {
     @StateObject var viewModel: UploadPostViewModel
     @Binding var tabIndex: Int
 
-    init(selectedImage: UIImage?, tabIndex: Binding<Int>) {
-        self._viewModel = StateObject(wrappedValue: UploadPostViewModel(selectedImage: selectedImage))
+    init(selectedImage: UIImage?, tabIndex: Binding<Int>, user: User) {
+        self._viewModel = StateObject(wrappedValue: UploadPostViewModel(selectedImage: selectedImage, user: user))
         self._tabIndex = tabIndex
     }
     

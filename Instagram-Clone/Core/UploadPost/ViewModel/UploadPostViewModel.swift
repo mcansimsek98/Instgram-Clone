@@ -15,9 +15,11 @@ import FirebaseFirestore
 final class UploadPostViewModel: ObservableObject {
     @Published var selectedImage: UIImage?
     @Published var caption: String = ""
+    private let user: User
     
-    init(selectedImage: UIImage?) {
+    init(selectedImage: UIImage?, user: User) {
         self.selectedImage = selectedImage
+        self.user = user
     }
     
     func uploadPost() async throws {
@@ -28,7 +30,7 @@ final class UploadPostViewModel: ObservableObject {
         }
         
         let postRef = Firestore.firestore().collection("posts").document()
-        let post = PostModel(id: postRef.documentID, ownerUid: uid, caption: caption, likes: 0, imageUrl: imageUrl, timeStamp: Timestamp())
+        let post = PostModel(id: postRef.documentID, ownerUid: uid, caption: caption, likes: 0, imageUrl: imageUrl, timeStamp: Timestamp(), user: user)
         
         guard let encodedPost = try? Firestore.Encoder().encode(post) else { return }
         try await postRef.setData(encodedPost)
