@@ -9,16 +9,16 @@ import SwiftUI
 
 struct StoryView: View {
     @Environment(\.dismiss) var dismiss
-    @State var users: [StoryModel]
+    @State var stories: [StoryModel]
     @State private var currentUserIndex: Int
     @State private var currentStoryIndex: Int = 0
     @State private var progress: CGFloat = 0.0
     @State private var timer: Timer?
     @State private var message: String = ""
     
-    init(users: [StoryModel], initialStory: StoryModel) {
-        self.users = users
-        self._currentUserIndex = State(initialValue: users.firstIndex(where: { $0.id == initialStory.id }) ?? 0)
+    init(stories: [StoryModel], initialStory: StoryModel) {
+        self.stories = stories
+        self._currentUserIndex = State(initialValue: stories.firstIndex(where: { $0.id == initialStory.id }) ?? 0)
     }
     
     var body: some View {
@@ -26,7 +26,7 @@ struct StoryView: View {
             VStack {
                 ZStack {
                     GeometryReader { geometry in
-                        let currentUser = users[currentUserIndex]
+                        let currentUser = stories[currentUserIndex]
                         let currentStory = currentUser.stories[currentStoryIndex].image
                         
                         Image(currentStory)
@@ -47,11 +47,7 @@ struct StoryView: View {
                             .padding(.horizontal, 5)
                             
                             HStack {
-                                Image(currentUser.user?.profileImage ?? "person")
-                                    .resizable()
-                                    .scaledToFill()
-                                    .frame(width: 40, height: 40)
-                                    .clipShape(Circle())
+                                CircularProfileImageView(user: currentUser.user, size: .xsmall)
                                 
                                 Text(currentUser.user?.username ?? "")
                                     .font(.headline)
@@ -103,11 +99,11 @@ struct StoryView: View {
                 progress = 0.0
                 currentStoryIndex += 1
                 
-                if currentStoryIndex >= users[currentUserIndex].stories.count {
+                if currentStoryIndex >= stories[currentUserIndex].stories.count {
                     currentStoryIndex = 0
                     currentUserIndex += 1
                     
-                    if currentUserIndex >= users.count {
+                    if currentUserIndex >= stories.count {
                         dismiss()
                         stopTimer()
                     }

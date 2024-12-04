@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B22E8A4F2D003B7600AA8A64 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = B22E8A4E2D003B7600AA8A64 /* Kingfisher */; };
 		B2BC48ED2CFB9641005C76CC /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = B2BC48EC2CFB9641005C76CC /* FirebaseAuth */; };
 		B2BC48EF2CFB9641005C76CC /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = B2BC48EE2CFB9641005C76CC /* FirebaseFirestore */; };
 		B2BC48F32CFB9641005C76CC /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = B2BC48F22CFB9641005C76CC /* FirebaseStorage */; };
@@ -42,6 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B22E8A4F2D003B7600AA8A64 /* Kingfisher in Frameworks */,
 				B2BC48F32CFB9641005C76CC /* FirebaseStorage in Frameworks */,
 				B2BC48ED2CFB9641005C76CC /* FirebaseAuth in Frameworks */,
 				B2BC48EF2CFB9641005C76CC /* FirebaseFirestore in Frameworks */,
@@ -98,6 +100,7 @@
 				B2BC48EC2CFB9641005C76CC /* FirebaseAuth */,
 				B2BC48EE2CFB9641005C76CC /* FirebaseFirestore */,
 				B2BC48F22CFB9641005C76CC /* FirebaseStorage */,
+				B22E8A4E2D003B7600AA8A64 /* Kingfisher */,
 			);
 			productName = "Instagram-Clone";
 			productReference = B22E3D202CF4EF1C005A5171 /* Instagram-Clone.app */;
@@ -129,6 +132,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				B2BC48EA2CFB956D005C76CC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				B22E8A4D2D003B7600AA8A64 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = B22E3D212CF4EF1C005A5171 /* Products */;
@@ -298,6 +302,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -331,6 +336,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -370,6 +376,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		B22E8A4D2D003B7600AA8A64 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.1.1;
+			};
+		};
 		B2BC48EA2CFB956D005C76CC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
@@ -381,6 +395,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		B22E8A4E2D003B7600AA8A64 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B22E8A4D2D003B7600AA8A64 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
 		B2BC48EC2CFB9641005C76CC /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B2BC48EA2CFB956D005C76CC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

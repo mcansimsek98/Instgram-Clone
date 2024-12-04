@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ProfileContentView: View {
     let user: User
-    let isCurrentUser: Bool
     @Environment(\.dismiss) var dismiss
 
     var posts: [PostModel] {
@@ -24,22 +23,23 @@ struct ProfileContentView: View {
             /// PostGridView
             PostGridView(posts: posts)
         }
-        .navigationTitle(isCurrentUser ? "Profile" : user.username)
+        .navigationTitle(user.isCurrentUser ? "Profile" : user.username)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            if isCurrentUser {
+            if user.isCurrentUser {
                 ToolbarItem {
                     Button {
                         AuthService.shared.singOut()
                     } label: {
                         Image(systemName: "line.3.horizontal")
-                            .tint(.black)
+                            .tint(.igBlack)
                     }
                 }
             }else {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Image(systemName: "chevron.left")
                         .imageScale(.large)
+                        .tint(.igBlack)
                         .onTapGesture {
                             dismiss()
                         }
@@ -50,5 +50,5 @@ struct ProfileContentView: View {
 }
 
 //#Preview {
-//    ProfileContentView(user: User.MOCK_USERS[0], isCurrentUser: true)
+//    ProfileContentView(user: User.MOCK_USERS[0])
 //}
