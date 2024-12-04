@@ -33,7 +33,3 @@ struct CircularProfileImageView: View {
         .clipShape(Circle())
     }
 }
-
-//#Preview {
-//    CircularProfileImageView(user: User.MOCK_USERS[0])
-//}

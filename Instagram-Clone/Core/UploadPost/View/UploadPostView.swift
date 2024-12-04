@@ -83,7 +83,3 @@ struct UploadPostView: View {
         tabIndex = index
     }
 }
-
-//#Preview {
-//    UploadPostView(selectedImage: nil)
-//}

@@ -73,7 +73,3 @@ struct FeedStoryCell: View {
         }
     }
 }
-
-//#Preview {
-//    FeedStoryCell(story: StoryModel.MOCK_STORIES[0])
-//}

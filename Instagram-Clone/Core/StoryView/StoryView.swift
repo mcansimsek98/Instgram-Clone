@@ -120,8 +120,3 @@ struct StoryView: View {
         currentUserIndex = 0
     }
 }
-
-
-//#Preview {
-//    StoryView(users: StoryModel.MOCK_STORIES, initialStory: StoryModel.MOCK_STORIES[0])
-//}

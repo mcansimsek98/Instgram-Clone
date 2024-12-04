@@ -56,7 +56,3 @@ struct MainTabView: View {
         .accentColor(.igBlack)
     }
 }
-
-//#Preview {
-//    MainTabView(user: User.MOCK_USERS[0])
-//}

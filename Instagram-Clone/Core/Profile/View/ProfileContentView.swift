@@ -8,25 +8,25 @@
 import SwiftUI
 
 struct ProfileContentView: View {
-    let user: User
     @Environment(\.dismiss) var dismiss
-
-    var posts: [PostModel] {
-        return PostModel.MOCK_POTS.filter({$0.user?.username == user.username})
+    @StateObject private var viewModel: ProfileViewModel
+    
+    init(user: User) {
+        _viewModel = StateObject(wrappedValue: ProfileViewModel(user: user))
     }
     
     var body: some View {
         ScrollView {
             /// Header
-            ProfileHeaderView(user: user)
+            ProfileHeaderView(user: viewModel.user)
             
             /// PostGridView
-            PostGridView(posts: posts)
+            PostGridView(posts: viewModel.posts)
         }
-        .navigationTitle(user.isCurrentUser ? "Profile" : user.username)
+        .navigationTitle(viewModel.user.isCurrentUser ? "Profile" : viewModel.user.username)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            if user.isCurrentUser {
+            if viewModel.user.isCurrentUser {
                 ToolbarItem {
                     Button {
                         AuthService.shared.singOut()
@@ -46,9 +46,10 @@ struct ProfileContentView: View {
                 }
             }
         }
+        .onAppear {
+            Task {
+                try await viewModel.fetchUsersPosts()
+            }
+        }
     }
 }
-
-//#Preview {
-//    ProfileContentView(user: User.MOCK_USERS[0])
-//}

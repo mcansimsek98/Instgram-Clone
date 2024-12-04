@@ -16,7 +16,3 @@ struct SplashView: View {
             .frame(width: size, height: size)
     }
 }
-
-//#Preview {
-//    SplashView()
-//}

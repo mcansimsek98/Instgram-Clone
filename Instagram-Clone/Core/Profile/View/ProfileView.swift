@@ -10,10 +10,6 @@ import SwiftUI
 struct ProfileView: View {
     let user: User
     
-    var posts: [PostModel] {
-        return PostModel.MOCK_POTS.filter({$0.user?.username == user.username})
-    }
-    
     var body: some View {
         if user.isCurrentUser {
             NavigationStack {
@@ -24,7 +20,3 @@ struct ProfileView: View {
         }
     }
 }
-
-//#Preview {
-//    ProfileView(user: User.MOCK_USERS[0])
-//}
