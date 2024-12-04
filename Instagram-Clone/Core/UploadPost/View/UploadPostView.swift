@@ -10,22 +10,26 @@ import PhotosUI
 
 struct UploadPostView: View {
     @Environment(\.dismiss) var dismiss
-    @State private var caption: String = ""
-    @State private var imagePicerPresented = false
-    let selectedImage: UIImage?
+    @StateObject var viewModel: UploadPostViewModel
+    @Binding var tabIndex: Int
 
+    init(selectedImage: UIImage?, tabIndex: Binding<Int>) {
+        self._viewModel = StateObject(wrappedValue: UploadPostViewModel(selectedImage: selectedImage))
+        self._tabIndex = tabIndex
+    }
+    
     var body: some View {
         VStack {
             /// Post image and camption
             HStack {
-                if let image = selectedImage {
+                if let image = viewModel.selectedImage {
                     Image(uiImage: image)
                         .resizable()
                         .scaledToFill()
                         .frame(width: 90, height: 90)
                         .clipped()
                         .onTapGesture {
-                            dismiss()
+                            clearPostData()
                         }
                 }else {
                     Image("uploadImage")
@@ -34,23 +38,27 @@ struct UploadPostView: View {
                         .frame(width: 90, height: 90)
                         .clipped()
                         .onTapGesture {
-                            dismiss()
+                            clearPostData()
                         }
                 }
-                
-                TextField("Enter your caption...", text: $caption, axis: .vertical)
+                TextField("Enter your caption...", text: $viewModel.caption, axis: .vertical)
             }
             .padding()
             
             Spacer()
         }
+        .navigationBarTitle("New Post")
+        .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Text("Upload")
                     .fontWeight(.semibold)
                     .foregroundColor(Color(.systemBlue))
                     .onTapGesture {
-                        
+                        Task {
+                            try await viewModel.uploadPost()
+                            clearPostData(true)
+                        }
                     }
             }
             
@@ -59,11 +67,20 @@ struct UploadPostView: View {
                     .imageScale(.large)
                     .foregroundColor(Color(.systemBlue))
                     .onTapGesture {
-                        dismiss()
+                        clearPostData()
                     }
             }
         }
-        
+    }
+    
+    private func clearPostData(_ goHome: Bool = false) {
+        viewModel.caption = ""
+        viewModel.selectedImage = nil
+        goHome ? setTabIndex(0) : dismiss()
+    }
+    
+    private func setTabIndex(_ index: Int) {
+        tabIndex = index
     }
 }
 
