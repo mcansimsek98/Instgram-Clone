@@ -37,7 +37,7 @@ struct FeedStoryView: View {
         }
         .scrollIndicators(.hidden)
         .fullScreenCover(item: $selectedStory) { story in
-            StoryView(users: stories, initialStory: story)
+            StoryView(stories: stories, initialStory: story)
         }
         .transaction { transaction in
             transaction.disablesAnimations = true

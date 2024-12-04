@@ -24,6 +24,8 @@ class AuthService {
         do {
             let result = try await Auth.auth().signIn(withEmail: email, password: password)
             userSession = result.user
+            
+            try await fetchUserData()
         } catch {
             print("DEBUG: Failed to log in user with error \(error.localizedDescription)")
         }

@@ -24,11 +24,7 @@ struct FeedStoryCell: View {
                                     lineWidth: 5)
                                 
                                 let size: CGFloat = story?.stories.count == 0 ? 80 : 72
-                                Image(story?.user?.profileImage ?? "person")
-                                    .resizable()
-                                    .scaledToFill()
-                                    .frame(width: size, height: size)
-                                    .clipShape(Circle())
+                                CircularProfileImageView(user: story?.user, size: .custom(size))
                             }
                             .frame(width: 80, height: 80)
                             .clipShape(Circle())
@@ -63,11 +59,7 @@ struct FeedStoryCell: View {
                                      [.gray] : [.green, .orange, .yellow, .red, .green]),
                             lineWidth: 5)
 
-                        Image(story?.user?.profileImage ?? "person")
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: 72, height: 72)
-                            .clipShape(Circle())
+                        CircularProfileImageView(user: story?.user, size: .custom(72))
                     }
                     .frame(width: 80, height: 80)
                     .clipShape(Circle())
