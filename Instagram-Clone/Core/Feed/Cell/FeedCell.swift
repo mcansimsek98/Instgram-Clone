@@ -93,7 +93,3 @@ struct FeedCell: View {
         }
     }
 }
-
-//#Preview {
-//    FeedCell(post: PostModel.MOCK_POTS[0])
-//}

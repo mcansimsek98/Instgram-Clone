@@ -55,7 +55,3 @@ struct CreateUserNameView: View {
         }
     }
 }
-
-//#Preview {
-//    CreateUserNameView()
-//}

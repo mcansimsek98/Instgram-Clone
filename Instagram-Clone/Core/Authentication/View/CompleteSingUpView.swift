@@ -50,7 +50,3 @@ struct CompleteSingUpView: View {
         }
     }
 }
-
-//#Preview {
-//    CompleteSingUpView()
-//}

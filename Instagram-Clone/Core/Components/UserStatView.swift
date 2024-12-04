@@ -23,7 +23,3 @@ struct UserStatView: View {
         .frame(width: 76)
     }
 }
-
-//#Preview {
-//    UserStatView(value: 10, title: "Posts")
-//}

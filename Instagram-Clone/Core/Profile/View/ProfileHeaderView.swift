@@ -69,7 +69,3 @@ struct ProfileHeaderView: View {
         }
     }
 }
-
-//#Preview {
-//    ProfileHeaderView(user: User.MOCK_USERS[0])
-//}

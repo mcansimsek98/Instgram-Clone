@@ -141,9 +141,4 @@ struct GalleryImagePicker: View {
             }
         }
     }
-    
 }
-
-//#Preview {
-//    GalleryImagePicker(tabIndex: .constant(0))
-//}
