@@ -16,7 +16,8 @@ struct GalleryImagePicker: View {
     @State private var selectedImageID: UUID? = nil
     @State private var navigateToUploadPost = false
     @Binding var tabIndex: Int
-    
+    @State private var uploadedPost: Bool = false
+
     var body: some View {
         NavigationStack {
             VStack(spacing: 2) {
@@ -75,8 +76,14 @@ struct GalleryImagePicker: View {
             .navigationDestination(isPresented: $navigateToUploadPost) {
                 if let selectedID = selectedImageID,
                    let selectedImage = images.first(where: { $0.id == selectedID })?.image {
-                    UploadPostView(selectedImage: selectedImage, tabIndex: $tabIndex, user: user)
+                    UploadPostView(selectedImage: selectedImage, uploadedPost: $uploadedPost, user: user)
                         .navigationBarBackButtonHidden()
+                        .onAppear() {
+                            self.uploadedPost = uploadedPost
+                            if self.uploadedPost {
+                                tabIndex = 0
+                            }
+                        }
                 }
             }
         }

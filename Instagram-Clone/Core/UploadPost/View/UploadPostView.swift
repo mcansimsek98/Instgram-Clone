@@ -11,11 +11,11 @@ import PhotosUI
 struct UploadPostView: View {
     @Environment(\.dismiss) var dismiss
     @StateObject var viewModel: UploadPostViewModel
-    @Binding var tabIndex: Int
+    @Binding var uploadedPost: Bool
 
-    init(selectedImage: UIImage?, tabIndex: Binding<Int>, user: User) {
+    init(selectedImage: UIImage?, uploadedPost: Binding<Bool>, user: User) {
         self._viewModel = StateObject(wrappedValue: UploadPostViewModel(selectedImage: selectedImage, user: user))
-        self._tabIndex = tabIndex
+        self._uploadedPost = uploadedPost
     }
     
     var body: some View {
@@ -76,10 +76,7 @@ struct UploadPostView: View {
     private func clearPostData(_ goHome: Bool = false) {
         viewModel.caption = ""
         viewModel.selectedImage = nil
-        goHome ? setTabIndex(0) : dismiss()
-    }
-    
-    private func setTabIndex(_ index: Int) {
-        tabIndex = index
+        dismiss()
+        uploadedPost = goHome
     }
 }

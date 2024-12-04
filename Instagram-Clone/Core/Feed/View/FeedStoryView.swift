@@ -22,14 +22,18 @@ struct FeedStoryView: View {
                 
                 FeedStoryCell(story: userStory)
                     .onTapGesture {
-                        selectedStory = userStory // Seçilen hikaye atanır
+                        if userStory.stories.count != 0 {
+                            selectedStory = userStory
+                        }
                     }
                 
                 ForEach(stories.filter { $0.user?.username != user.username }) { story in
                     FeedStoryCell(story: story)
                         .padding(.horizontal, 6)
                         .onTapGesture {
-                            selectedStory = story // Seçilen hikaye atanır
+                            if story.stories.count != 0 {
+                                selectedStory = story
+                            }
                         }
                 }
             }

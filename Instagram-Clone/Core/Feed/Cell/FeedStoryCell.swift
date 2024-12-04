@@ -29,24 +29,22 @@ struct FeedStoryCell: View {
                             .frame(width: 80, height: 80)
                             .clipShape(Circle())
                             
-                            if story?.stories.first?.isSeen == true {
-                                VStack {
+                            VStack {
+                                Spacer()
+                                HStack {
                                     Spacer()
-                                    HStack {
-                                        Spacer()
-                                        ZStack {
-                                            Color(.systemBackground)
-                                            
-                                            Text("+")
-                                                .font(.subheadline)
-                                                .foregroundColor(.white)
-                                                .frame(width: 22, height: 22)
-                                                .background(Color.blue)
-                                                .clipShape(Circle())
-                                        }
-                                        .frame(width: 30, height: 30)
-                                        .clipShape(Circle())
+                                    ZStack {
+                                        Color(.systemBackground)
+                                        
+                                        Text("+")
+                                            .font(.subheadline)
+                                            .foregroundColor(.white)
+                                            .frame(width: 22, height: 22)
+                                            .background(Color.blue)
+                                            .clipShape(Circle())
                                     }
+                                    .frame(width: 30, height: 30)
+                                    .clipShape(Circle())
                                 }
                             }
                         }
@@ -58,7 +56,7 @@ struct FeedStoryCell: View {
                             Gradient(colors: story?.stories.first?.isSeen == true ?
                                      [.gray] : [.green, .orange, .yellow, .red, .green]),
                             lineWidth: 5)
-
+                        
                         CircularProfileImageView(user: story?.user, size: .custom(72))
                     }
                     .frame(width: 80, height: 80)
