@@ -31,9 +31,9 @@ struct StoryImageModel: Codable, Identifiable, Hashable {
 extension StoryModel {
     static var MOCK_STORIES: [StoryModel] = [
         .init(user: User.MOCK_USERS[0], stories: [StoryImageModel(image: "post_2", isSeen: true), StoryImageModel(image: "post_3", isSeen: false)]),
-        .init(user: User.MOCK_USERS[1], stories: [StoryImageModel(image: "person_2", isSeen: true)]),
+        .init(user: User.MOCK_USERS[4], stories: [StoryImageModel(image: "person_2", isSeen: true)]),
         .init(user: User.MOCK_USERS[2], stories: [StoryImageModel(image: "person_4", isSeen: true), StoryImageModel(image: "person_5", isSeen: false)]),
-        .init(user: User.MOCK_USERS[3], stories: [StoryImageModel(image: "person_3", isSeen: true), StoryImageModel(image: "person_1", isSeen: false)]),
-        .init(user: User.MOCK_USERS[5], stories: [StoryImageModel(image: "person_5", isSeen: true), StoryImageModel(image: "person_4", isSeen: false)]),
+        .init(user: User.MOCK_USERS[1], stories: [StoryImageModel(image: "person_3", isSeen: true), StoryImageModel(image: "person_1", isSeen: false)]),
+        .init(user: User.MOCK_USERS[3], stories: [StoryImageModel(image: "person_5", isSeen: true), StoryImageModel(image: "person_4", isSeen: false)]),
     ]
 }
