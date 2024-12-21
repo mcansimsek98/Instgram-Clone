@@ -30,8 +30,9 @@ InstagramClone/
 ├── Views/
 │   ├── Authentication/
 │   ├── Home/
-│   ├── Profile/
+│   ├── Search/
 │   ├── Upload/
+│   ├── Profile/
 ├── ViewModels/
 ├── Services/
 ├── Resources/
